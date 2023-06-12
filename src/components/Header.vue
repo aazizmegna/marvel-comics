@@ -6,7 +6,7 @@
             <a href="">Marvel Comics</a>
             <div class="icons">
                 <a href="">My favorites</a> 
-                <div class="favorites-count">5</div>
+                <div class="favorites-count">{{stars}}</div>
                <font-awesome-icon icon="fa-solid fa-star" class="icon"/>
             </div>
         </div>
@@ -18,13 +18,19 @@
   <script>
   export default {
     name: 'Marvel-comics',
+
+    computed: {
+      stars() {
+        return this.$store.state.favorites; // Access the fetched data from the store
+      }
+    }
   }
   </script>
   
   
   <style scoped>
   .header__container {
-    padding: 2rem 0;
+    padding: 1rem 0;
     position: relative;
   }
   
@@ -75,5 +81,27 @@
     font-size: 14px;
   }
 
+      /*---------------Media queries (Medium devices)------------------*/
+      @media screen and (max-width: 1024px){
+        .header__title{
+          grid-template-columns: 1fr;
+        }
+    }
+  
+    /*---------------Media queries (small devices)------------------*/
+    @media screen and (max-width: 600px){      
+    .header__title{
+      grid-template-columns: 1fr;
+    }
+    .icons{
+        padding-top: 4rem;
+        left: 0;
+        padding-left: 1rem;
+    }
+    .favorites-count {
+     
+        display: none;
+    }
+  }
   </style>
   

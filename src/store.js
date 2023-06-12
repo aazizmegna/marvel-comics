@@ -20,12 +20,15 @@ const store = createStore({
   actions: {
     fetchData({ commit }) {
       const storedData = localStorage.getItem('data');
-
+    
       if (storedData) {
         commit('setData', JSON.parse(storedData)); // Set the data from localStorage
       } else {
+        const apiKey = process.env.VUE_APP_API_KEY;
+        const hash = process.env.VUE_APP_HASH;
+    
         axios
-          .get('http://gateway.marvel.com/v1/public/comics?ts=1&apikey=44a18aede7485fab87072f38693a3d55&hash=a3b32d5c16fab4925172243466b57122') // Replace with your API endpoint
+          .get(`http://gateway.marvel.com/v1/public/comics?ts=1&apikey=${apiKey}&hash=${hash}`)
           .then(response => {
             const data = response.data;
             localStorage.setItem('data', JSON.stringify(data)); // Store the data in localStorage
@@ -36,6 +39,7 @@ const store = createStore({
           });
       }
     },
+    
   },
 });
 

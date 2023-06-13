@@ -62,4 +62,18 @@
     h3{
         color: var(--color-red);
     }
+
+    /* Media queries (Medium devices) */
+    @media screen and (max-width: 1024px) {
+        .details__container {
+        grid-template-columns: 1fr;
+        }
+    }
+    
+    /* Media queries (small devices) */
+    @media screen and (max-width: 600px) {
+        .details__container {
+        grid-template-columns: 1fr;
+        }
+    }
 </style>
